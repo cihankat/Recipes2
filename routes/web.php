@@ -30,7 +30,8 @@ Route::get(
 Route::get('/users/create',    [UserController::class, 'create']);
 Route::post('/users/store', [UserController::class, 'store']);
 
-Route::get('/recipes',
+Route::get(
+    '/recipes',
     [RecipeController::class, 'index']
 );
 
@@ -38,7 +39,7 @@ Route::get('/recipes',
 
 
 
-Route::get('/recipes/create',[RecipeController::class, 'create']);
+Route::get('/recipes/create', [RecipeController::class, 'create']);
 
 Route::get('/recipes/edit/{recipe}', [RecipeController::class, 'edit']);
 Route::get('/recipes/show/{recipe}', [RecipeController::class, 'show']);
@@ -48,11 +49,16 @@ Route::post('/recipes/store', [RecipeController::class, 'store']);
 Route::post('recipes/update/{recipe}', [RecipeController::class, 'update']);
 
 //ingredients
-Route::get('/ingredients',
+Route::get(
+    '/ingredients',
     [IngredientController::class, 'index']
 );
 
-Route::get('ingredients/create',[IngredientController::class, 'create']);
-Route::post('ingredients/store',[IngredientController::class, 'store']);
+Route::get('/ingredients/create', [IngredientController::class, 'create']);
+Route::post('/ingredients/store', [IngredientController::class, 'store']);
+Route::get('/ingredients/show/{ingredient}', [IngredientController::class, 'show']);
+Route::get('/ingredients/edit/{ingredient}', [IngredientController::class, 'edit']);
+Route::post('/ingredients/update/{ingredient}', [IngredientController::class, 'update']);
 
-
+Route::get('/recipes/delete/{recipe}', [RecipeController::class, 'destroy']);
+Route::get('/ingredients/delete/{ingredient}', [IngredientController::class, 'destroy']);

@@ -25,6 +25,7 @@
                     <td>
                         <a href="/recipes/edit/{{ $recipe->id }}">Edit</a>
                         <a href="/recipes/show/{{ $recipe->id }}">Show</a>
+                        <a href="/recipes/delete/{{ $recipe->id }}">Delete</a>
                     </td>
                 </tr>
             @endforeach

@@ -49,4 +49,14 @@ class RecipeController extends Controller
 
         return redirect('/recipes');
     }
+
+     /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Recipe $recipe)
+    {
+        $recipe->delete();
+
+        return redirect('recipes')->with('status', 'Recipe deleted');
+    }
 }
