@@ -18,13 +18,13 @@ class RecipeSeeder extends Seeder
                 "name" => "Cannelloni",
                 "description" => "Nice Italian dish",
                 "cook_time" => 40,
-                "category" => "Italian"
+                "category_id" => 1
             ],
             [
                 "name" => "Lasagne",
                 "description" => "Nice Italian dish",
                 "cook_time" => 80,
-                "category" => "Italian"
+                "category_id" => 1
             ]
         ];
 

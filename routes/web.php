@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UserController;
@@ -62,3 +63,5 @@ Route::post('/ingredients/update/{ingredient}', [IngredientController::class, 'u
 
 Route::get('/recipes/delete/{recipe}', [RecipeController::class, 'destroy']);
 Route::get('/ingredients/delete/{ingredient}', [IngredientController::class, 'destroy']);
+
+Route::get('/categories', [CategoryController::class, 'index']);

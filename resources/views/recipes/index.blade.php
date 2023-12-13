@@ -1,4 +1,5 @@
 <x-layout>
+
     <table class="table table-hover">
         <thead>
             <tr>
@@ -14,7 +15,7 @@
                     <td>{{ $recipe->name }}</td>
                     <td>{{ $recipe->description }}</td>
                     <td>{{ $recipe->cook_time }}</td>
-                    <td>{{ $recipe->category }}</td>
+                    <td>{{ $recipe->category->name }}</td>
                     <td>
                         <ul class="list-group">
                             @foreach ($recipe->ingredients as $ingredient)

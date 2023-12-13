@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,14 @@ class RecipeController extends Controller
 
     public function index()
     {
-        return view('recipes.index', ['recipes' => Recipe::all()]);
+        $data = [
+            'recipes'    => Recipe::all(),
+            'categories' => Category::all()
+        ];
+
+        // dd($data);
+
+        return view('recipes.index', $data);
     }
 
 
@@ -50,7 +58,7 @@ class RecipeController extends Controller
         return redirect('/recipes');
     }
 
-     /**
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Recipe $recipe)

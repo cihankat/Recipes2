@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->integer('cook_time')->comment('in minutes');
-            $table->string('category')->default("Food");
             $table->timestamps();
+
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
