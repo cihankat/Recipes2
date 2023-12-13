@@ -41,27 +41,20 @@ Route::get(
 
 
 Route::get('/recipes/create', [RecipeController::class, 'create']);
-
 Route::get('/recipes/edit/{recipe}', [RecipeController::class, 'edit']);
 Route::get('/recipes/show/{recipe}', [RecipeController::class, 'show']);
-
 Route::post('/recipes/store', [RecipeController::class, 'store']);
-
 Route::post('recipes/update/{recipe}', [RecipeController::class, 'update']);
+Route::get('/recipes/delete/{recipe}', [RecipeController::class, 'destroy']);
 
 //ingredients
-Route::get(
-    '/ingredients',
-    [IngredientController::class, 'index']
-);
-
+Route::get('/ingredients', [IngredientController::class, 'index']);
 Route::get('/ingredients/create', [IngredientController::class, 'create']);
 Route::post('/ingredients/store', [IngredientController::class, 'store']);
 Route::get('/ingredients/show/{ingredient}', [IngredientController::class, 'show']);
 Route::get('/ingredients/edit/{ingredient}', [IngredientController::class, 'edit']);
 Route::post('/ingredients/update/{ingredient}', [IngredientController::class, 'update']);
-
-Route::get('/recipes/delete/{recipe}', [RecipeController::class, 'destroy']);
 Route::get('/ingredients/delete/{ingredient}', [IngredientController::class, 'destroy']);
 
 Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/show/{category}', [CategoryController::class, 'show']);
