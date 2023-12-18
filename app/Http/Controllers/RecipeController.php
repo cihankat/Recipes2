@@ -24,7 +24,11 @@ class RecipeController extends Controller
 
     public function create()
     {
-        return view('recipes.create');
+        $data = [
+            'categories' => Category::all()
+        ];
+
+        return view('recipes.create', $data);
     }
 
     public function store(Request $request)
@@ -33,7 +37,7 @@ class RecipeController extends Controller
         $recipe->name = $request->nameRecipe;
         $recipe->description = $request->descriptionRecipe;
         $recipe->cook_time = $request->cookTime;
-        $recipe->category = $request->category;
+        $recipe->category_id = $request->category;
         $recipe->save();
     }
 
