@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Ingredient;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class RecipeController extends Controller
     public function create()
     {
         $data = [
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'ingredients' => Ingredient::all()
         ];
 
         return view('recipes.create', $data);
@@ -39,11 +41,15 @@ class RecipeController extends Controller
         $recipe->cook_time = $request->cookTime;
         $recipe->category_id = $request->category;
         $recipe->save();
+
+        $recipe->ingredients()->attach($request->ingredients, ['quantity' => 3, 'unity' => "kg"]);
+
+        return redirect('/recipes')->with('status', "Recept is gemaakt");
     }
 
     public function edit(Recipe $recipe)
     {
-        return view('recipes.edit', ['recipe' =>  $recipe]);
+        return view('recipes.edit', ['recipe' =>  $recipe, 'categories' => Category::all()]);
     }
 
     public function show(Recipe $recipe)
@@ -56,7 +62,7 @@ class RecipeController extends Controller
         $recipe->name = $request->nameRecipe;
         $recipe->description = $request->descriptionRecipe;
         $recipe->cook_time = $request->cookTime;
-        $recipe->category = $request->category;
+        $recipe->category_id = $request->category;
         $recipe->save();
 
         return redirect('/recipes');
@@ -67,6 +73,7 @@ class RecipeController extends Controller
      */
     public function destroy(Recipe $recipe)
     {
+        $recipe->ingredients()->detach();
         $recipe->delete();
 
         return redirect('recipes')->with('status', 'Recipe deleted');
