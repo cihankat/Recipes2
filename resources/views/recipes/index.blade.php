@@ -1,5 +1,5 @@
 <x-layout>
-
+    <a href="/recipes/create/">Create Recipe</a>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -16,13 +16,6 @@
                     <td>{{ $recipe->description }}</td>
                     <td>{{ $recipe->cook_time }}</td>
                     <td>{{ $recipe->category->name }}</td>
-                    <td>
-                        <ul class="list-group">
-                            @foreach ($recipe->ingredients as $ingredient)
-                                <li class="list-group-item">{{ $ingredient->name }}</li>
-                            @endforeach
-                        </ul>
-                    </td>
                     <td>
                         <a href="/recipes/edit/{{ $recipe->id }}">Edit</a>
                         <a href="/recipes/show/{{ $recipe->id }}">Show</a>
