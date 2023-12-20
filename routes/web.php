@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,17 +36,20 @@ Route::get(
     '/recipes',
     [RecipeController::class, 'index']
 );
-
-
-
-
-
-Route::get('/recipes/create', [RecipeController::class, 'create']);
-Route::get('/recipes/edit/{recipe}', [RecipeController::class, 'edit']);
 Route::get('/recipes/show/{recipe}', [RecipeController::class, 'show']);
-Route::post('/recipes/store', [RecipeController::class, 'store']);
-Route::post('recipes/update/{recipe}', [RecipeController::class, 'update']);
-Route::get('/recipes/delete/{recipe}', [RecipeController::class, 'destroy']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/recipes/create', [RecipeController::class, 'create']);
+    Route::get('/recipes/edit/{recipe}', [RecipeController::class, 'edit']);
+    Route::post('/recipes/store', [RecipeController::class, 'store']);
+    Route::post('recipes/update/{recipe}', [RecipeController::class, 'update']);
+    Route::get('/recipes/delete/{recipe}', [RecipeController::class, 'destroy']);
+
+});
+
+
+
+
 
 //ingredients
 Route::get('/ingredients', [IngredientController::class, 'index']);
@@ -63,6 +67,3 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
