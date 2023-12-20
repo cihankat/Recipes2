@@ -15,7 +15,13 @@
     </div>
     <div class="form-group">
         <label for="category">Categorie</label>
-        <input type="text" name="category" id="category" value="{{$recipe->category}}">
+
+        <select name="category" id="category">
+            <option value="" selected disabled>Huidige: {{ $recipe->category->name }}</option>
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{$category->name}}</option>
+            @endforeach
+        </select>
     </div>
     <button type="submit">Update recept!</button>
 

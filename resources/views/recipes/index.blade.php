@@ -1,5 +1,12 @@
 <x-layout>
     <a href="/recipes/create/">Create Recipe</a>
+
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+    @endif
+    
     <table class="table table-hover">
         <thead>
             <tr>
@@ -25,4 +32,6 @@
             @endforeach
         </tbody>
     </table>
+
+
 </x-layout>
