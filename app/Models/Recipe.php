@@ -18,6 +18,4 @@ class Recipe extends Model
     {
         return $this->belongsToMany(Ingredient::class, 'ingredients_recipes')->withPivot(['quantity', 'unity']);
     }
-
-
 }

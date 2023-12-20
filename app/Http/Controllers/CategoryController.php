@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Http\Request;
+use App\Models\Recipe;
+use Illuminate\Contracts\View\View;
 
 class CategoryController extends Controller
 {
@@ -14,6 +15,8 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        return view('categories.show', ['category' => $category]);
+        return view('content.categories.show', [
+            'category' => $category,
+        ]);
     }
 }

@@ -14,21 +14,22 @@
             <input type="number" name="cookTime" id="cookTime" class="form-control">
         </div>
         <div class="form-group">
-            @foreach($ingredients as $ingredient)
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{$ingredient->id}}" 
-                id="ingredient_{{$ingredient->id}}" name="ingredients[]">
-                <label class="form-check-label" for="ingredient_{{$ingredient->id}}">
-                    {{$ingredient->name}}
-                </label>
-              </div>
+            @foreach ($ingredients as $ingredient)
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="{{ $ingredient->id }}"
+                        id="ingredient_{{ $ingredient->id }}" name="ingredients[]">
+                    <label class="form-check-label" for="ingredient_{{ $ingredient->id }}">
+                        {{ $ingredient->name }}
+                    </label>
+                </div>
             @endforeach
+
         </div>
         <div class="form-group">
             <label for="category">Categorie</label>
             <select name="category" id="category" class="form-select">
                 @foreach ($categories as $category)
-                    <option value="{{$category->id}}">{{$category->name}}</option>
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>

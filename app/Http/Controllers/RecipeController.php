@@ -39,18 +39,13 @@ class RecipeController extends Controller
         $recipe->name = $request->nameRecipe;
         $recipe->description = $request->descriptionRecipe;
         $recipe->cook_time = $request->cookTime;
-        $recipe->category_id = $request->category;
-
+        $recipe->category = $request->category;
         $recipe->save();
-        $recipe->ingredients()->attach($request->ingredients, ['quantity' => 3, 'unity' => "kg"]);
-
-        return redirect('/recipes')->with('status', "Recipe created");
     }
 
     public function edit(Recipe $recipe)
     {
-        return view('recipes.edit', ['recipe' => $recipe], ['categories' => Category::all()]);
-
+        return view('recipes.edit', ['recipe' =>  $recipe]);
     }
 
     public function show(Recipe $recipe)
